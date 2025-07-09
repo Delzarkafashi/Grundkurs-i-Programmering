@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grundkurs i Programmering - Nybörjare", "Grundkurs i Programmering - Nybörjare\Grundkurs i Programmering - Nybörjare.csproj", "{73D1B572-7C32-4092-93E9-4F3255B4983B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73D1B572-7C32-4092-93E9-4F3255B4983B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D1B572-7C32-4092-93E9-4F3255B4983B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D1B572-7C32-4092-93E9-4F3255B4983B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D1B572-7C32-4092-93E9-4F3255B4983B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17B35494-F829-46C3-A4ED-F1ED00CD055C}
+	EndGlobalSection
+EndGlobal
