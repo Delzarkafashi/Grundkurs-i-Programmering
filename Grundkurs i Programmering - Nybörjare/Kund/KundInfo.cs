@@ -1,11 +1,11 @@
 ﻿namespace Grundkurs_i_Programmering__Nybörjare.Kund
 {
-    public class Kund
+    public class KundInfo
     {
         public string Namn { get; set; }
         public double Saldo { get; set; }
 
-        public Kund(string namn, double startSaldo)
+        public KundInfo(string namn, double startSaldo)
         {
             Namn = namn;
             Saldo = startSaldo;
