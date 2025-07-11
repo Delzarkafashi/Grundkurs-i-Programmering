@@ -41,10 +41,10 @@ namespace Grundkurs_i_Programmering___Nybörjare
                         kund.VisaKöptaVaror();
                         break;
                     case "5":
-                        Console.WriteLine("👋 Hejdå!");
+                        Console.WriteLine("Hejdå!");
                         return;
                     default:
-                        Console.WriteLine("❗ Ogiltigt val.");
+                        Console.WriteLine("Ogiltigt val.");
                         break;
                 }
             }
