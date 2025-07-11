@@ -1,4 +1,4 @@
-﻿using Grundkurs_i_Programmering__Nybörjare.Affar;
+﻿using Grundkurs_i_Programmering__Nybörjare.Kund;
 
 namespace Grundkurs_i_Programmering___Nybörjare
 {
@@ -6,8 +6,11 @@ namespace Grundkurs_i_Programmering___Nybörjare
     {
         static void Main(string[] args)
         {
-            var affar = new Affar();
-            affar.VisaProdukter();
+            Console.Write("Vad heter du? ");
+            string namn = Console.ReadLine();
+
+            var kund = new Kund(namn, 100);
+            kund.VisaSaldo();
         }
     }
 }
