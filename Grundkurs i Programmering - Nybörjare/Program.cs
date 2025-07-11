@@ -9,7 +9,7 @@ namespace Grundkurs_i_Programmering___Nybörjare
             Console.Write("Vad heter du? ");
             string namn = Console.ReadLine();
 
-            var kund = new Kund(namn, 100);
+            var kund = new KundInfo(namn, 100);
             kund.VisaSaldo();
         }
     }
