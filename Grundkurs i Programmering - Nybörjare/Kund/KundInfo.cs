@@ -8,13 +8,13 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
     {
         public string Namn { get; set; }
         public double Saldo { get; set; }
-        public List<Produkt> KöptaProdukter { get; set; }
+        public List<VarorInfo> KöptaVaror { get; set; }
 
         public KundInfo(string namn, double startSaldo)
         {
             Namn = namn;
             Saldo = startSaldo;
-            KöptaProdukter = new List<Produkt>();
+            KöptaVaror = new List<VarorInfo>();
         }
 
         public void VisaSaldo()
@@ -24,16 +24,16 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
 
         public void VisaKöptaVaror()
         {
-            if (KöptaProdukter.Count == 0)
+            if (KöptaVaror.Count == 0)
             {
                 Console.WriteLine("Du har inte köpt något än.");
             }
             else
             {
-                Console.WriteLine("Dina köpta varor:");
-                foreach (var produkt in KöptaProdukter)
+                Console.WriteLine(" Dina köpta varor:");
+                foreach (var vara in KöptaVaror)
                 {
-                    Console.WriteLine($"- {produkt.Namn} ({produkt.Pris} kr)");
+                    Console.WriteLine($"- {vara.Namn} ({vara.Pris} kr, Energi: {vara.Energi})");
                 }
             }
         }

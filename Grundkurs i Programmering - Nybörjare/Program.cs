@@ -8,6 +8,8 @@ namespace Grundkurs_i_Programmering___Nybörjare
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             Console.Write("Vad heter du? ");
             string namn = Console.ReadLine();
 
@@ -32,7 +34,7 @@ namespace Grundkurs_i_Programmering___Nybörjare
                         kund.VisaSaldo();
                         break;
                     case "2":
-                        affar.VisaProdukter();
+                        affar.VisaVaror();
                         break;
                     case "3":
                         affar.KöpVara(kund);
@@ -41,10 +43,10 @@ namespace Grundkurs_i_Programmering___Nybörjare
                         kund.VisaKöptaVaror();
                         break;
                     case "5":
-                        Console.WriteLine("Hejdå!");
+                        Console.WriteLine(" Hejdå!");
                         return;
                     default:
-                        Console.WriteLine("Ogiltigt val.");
+                        Console.WriteLine(" Ogiltigt val.");
                         break;
                 }
             }
