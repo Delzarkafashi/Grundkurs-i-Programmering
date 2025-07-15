@@ -7,55 +7,55 @@ namespace Grundkurs_i_Programmering__Nybörjare.Affar
 {
     public class Affar
     {
-        private List<Produkt> produkter = new List<Produkt>();
+        private List<VarorInfo> varor = new List<VarorInfo>();
 
         public Affar()
         {
-            produkter.Add(new Produkt(1, "Bröd", 15));
-            produkter.Add(new Produkt(2, "Vatten", 10));
-            produkter.Add(new Produkt(3, "Äpple", 5));
+            varor.Add(new VarorInfo(1, "Bröd", 15, 5));
+            varor.Add(new VarorInfo(2, "Vatten", 10, 3));
+            varor.Add(new VarorInfo(3, "Äpple", 5, 2));
         }
 
-        public void VisaProdukter()
+        public void VisaVaror()
         {
-            Console.WriteLine("🛒 Välkommen till affären!\n");
-            foreach (var produkt in produkter)
+            Console.WriteLine(" Välkommen till affären!\n");
+            foreach (var vara in varor)
             {
-                Console.WriteLine($"{produkt.Id}. {produkt.Namn} – {produkt.Pris} kr");
+                Console.WriteLine(vara.ToString());
             }
         }
 
         public void KöpVara(KundInfo kund)
         {
-            VisaProdukter();
-            Console.Write("\nAnge ID på produkten du vill köpa: ");
+            VisaVaror();
+            Console.Write("\nAnge ID på varan du vill köpa: ");
 
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                var valdProdukt = produkter.FirstOrDefault(p => p.Id == id);
+                var valdVara = varor.FirstOrDefault(p => p.Id == id);
 
-                if (valdProdukt != null)
+                if (valdVara != null)
                 {
-                    if (kund.Saldo >= valdProdukt.Pris)
+                    if (kund.Saldo >= valdVara.Pris)
                     {
-                        kund.Saldo -= valdProdukt.Pris;
-                        kund.KöptaProdukter.Add(valdProdukt);
-                        Console.WriteLine($"Du köpte {valdProdukt.Namn} för {valdProdukt.Pris} kr");
+                        kund.Saldo -= valdVara.Pris;
+                        kund.KöptaVaror.Add(valdVara);
+                        Console.WriteLine($" Du köpte {valdVara.Namn} för {valdVara.Pris} kr (Energi +{valdVara.Energi})");
                         kund.VisaSaldo();
                     }
                     else
                     {
-                        Console.WriteLine("Du har inte tillräckligt med pengar!");
+                        Console.WriteLine(" Du har inte tillräckligt med pengar!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Felaktigt produkt-ID.");
+                    Console.WriteLine(" Felaktigt ID.");
                 }
             }
             else
             {
-                Console.WriteLine("Du måste skriva ett giltigt nummer.");
+                Console.WriteLine(" Du måste skriva ett giltigt nummer.");
             }
         }
     }

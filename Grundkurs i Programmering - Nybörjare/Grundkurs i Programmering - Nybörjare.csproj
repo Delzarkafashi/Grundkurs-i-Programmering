@@ -8,4 +8,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="varor\**" />
+    <EmbeddedResource Remove="varor\**" />
+    <None Remove="varor\**" />
+  </ItemGroup>
+
 </Project>
