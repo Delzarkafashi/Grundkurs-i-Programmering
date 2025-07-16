@@ -10,6 +10,16 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
         public double Saldo { get; set; }
         public List<VarorInfo> KöptaVaror { get; set; }
 
+        public double Lon { get; set; } = 50;
+
+        public void GeLon()
+        {
+            Saldo += Lon;
+            Console.WriteLine($"\n {Namn} fick {Lon} kr i veckolön!");
+            VisaSaldo();
+        }
+
+
         public KundInfo(string namn, double startSaldo)
         {
             Namn = namn;

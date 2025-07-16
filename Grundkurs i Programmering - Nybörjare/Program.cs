@@ -15,17 +15,20 @@ namespace Grundkurs_i_Programmering___Nybörjare
 
             var kund = new KundInfo(namn, 100);
             var affar = new Affar();
+            int vecka = 1;
 
             while (true)
             {
+                Console.WriteLine($"\n Vecka {vecka}");
+
                 Console.WriteLine("\n--- MENY ---");
                 Console.WriteLine("1. Visa saldo");
                 Console.WriteLine("2. Visa affären");
                 Console.WriteLine("3. Köp en vara");
                 Console.WriteLine("4. Visa köpta varor");
-                Console.WriteLine("5. Avsluta");
+                Console.WriteLine("5. Nästa vecka");
+                Console.WriteLine("6. Avsluta");
                 Console.Write("Välj ett alternativ: ");
-
                 string val = Console.ReadLine();
 
                 switch (val)
@@ -43,6 +46,10 @@ namespace Grundkurs_i_Programmering___Nybörjare
                         kund.VisaKöptaVaror();
                         break;
                     case "5":
+                        vecka++;
+                        kund.GeLon();
+                        break;
+                    case "6":
                         Console.WriteLine(" Hejdå!");
                         return;
                     default:
