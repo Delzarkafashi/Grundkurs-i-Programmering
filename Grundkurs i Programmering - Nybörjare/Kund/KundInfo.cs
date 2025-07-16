@@ -12,19 +12,22 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
 
         public double Lon { get; set; } = 50;
 
-        public void GeLon()
-        {
-            Saldo += Lon;
-            Console.WriteLine($"\n {Namn} fick {Lon} kr i veckolön!");
-            VisaSaldo();
-        }
-
+        public int Hunger { get; set; } = 5;
+        public int Torst { get; set; } = 5;
+        public int Energi { get; set; } = 5;
 
         public KundInfo(string namn, double startSaldo)
         {
             Namn = namn;
             Saldo = startSaldo;
             KöptaVaror = new List<VarorInfo>();
+        }
+
+        public void GeLon()
+        {
+            Saldo += Lon;
+            Console.WriteLine($"\n {Namn} fick {Lon} kr i veckolön!");
+            VisaSaldo();
         }
 
         public void VisaSaldo()
@@ -46,6 +49,16 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
                     Console.WriteLine($"- {vara.Namn} ({vara.Pris} kr, Energi: {vara.Energi})");
                 }
             }
+        }
+
+        public void VisaStatus()
+        {
+            Console.WriteLine($" Hunger: {Hunger} | Törst: {Torst} | Energi: {Energi}");
+        }
+
+        public bool ÄrLevande()
+        {
+            return Hunger > 0 && Torst > 0 && Energi > 0;
         }
     }
 }

@@ -19,8 +19,12 @@ namespace Grundkurs_i_Programmering___Nybörjare
 
             while (true)
             {
-                Console.WriteLine($"\n Vecka {vecka}");
+                Console.Clear();
 
+                Console.WriteLine($" {kund.Namn} | 💵 Saldo: {kund.Saldo} kr");
+                Console.WriteLine($" Hunger: {kund.Hunger} | Törst: {kund.Torst} | Energi: {kund.Energi}");
+                Console.WriteLine($" Vecka {vecka}");
+ 
                 Console.WriteLine("\n--- MENY ---");
                 Console.WriteLine("1. Visa saldo");
                 Console.WriteLine("2. Visa affären");
@@ -48,6 +52,15 @@ namespace Grundkurs_i_Programmering___Nybörjare
                     case "5":
                         vecka++;
                         kund.GeLon();
+                        kund.Hunger--;
+                        kund.Torst--;
+                        kund.Energi--;
+
+                        if (!kund.ÄrLevande())
+                        {
+                            Console.WriteLine("💀 Du glömde äta och dricka... Du förlorade spelet!");
+                            return;
+                        }
                         break;
                     case "6":
                         Console.WriteLine(" Hejdå!");
