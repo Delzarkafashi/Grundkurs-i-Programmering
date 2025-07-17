@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Grundkurs_i_Programmering__Nybörjare.Kund;
 using Grundkurs_i_Programmering__Nybörjare.Affar;
 
@@ -10,28 +11,44 @@ namespace Grundkurs_i_Programmering___Nybörjare
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Console.Write("Vad heter du? ");
-            string namn = Console.ReadLine();
+            int vecka;
+            KundInfo kund = new KundInfo("", 0);
 
-            var kund = new KundInfo(namn, 100);
+            // Ladda speldata om det finns
+            if (kund.LaddaData(out vecka))
+            {
+                Console.WriteLine($"Välkommen tillbaka, {kund.Namn}! Din data har laddats.");
+            }
+            else
+            {
+                Console.Write("Vad heter du? ");
+                string namn = Console.ReadLine();
+                kund = new KundInfo(namn, 100);
+                vecka = 1;
+            }
+
             var affar = new Affar();
-            int vecka = 1;
 
             while (true)
             {
-                Console.Clear();
+                // Visa status
+                Console.WriteLine($"\n Vecka {vecka}");
+                Console.WriteLine($"Hunger: {kund.Hunger} | Törst: {kund.Torst} | Energi: {kund.Energi}");
 
-                Console.WriteLine($" {kund.Namn} | 💵 Saldo: {kund.Saldo} kr");
-                Console.WriteLine($" Hunger: {kund.Hunger} | Törst: {kund.Torst} | Energi: {kund.Energi}");
-                Console.WriteLine($" Vecka {vecka}");
- 
+                // Kontroll om spelaren lever
+                if (kund.Hunger <= 0 || kund.Torst <= 0 || kund.Energi <= 0)
+                {
+                    Console.WriteLine("Du har dött av utmattning, svält eller uttorkning!");
+                    return;
+                }
+
                 Console.WriteLine("\n--- MENY ---");
                 Console.WriteLine("1. Visa saldo");
                 Console.WriteLine("2. Visa affären");
                 Console.WriteLine("3. Köp en vara");
                 Console.WriteLine("4. Visa köpta varor");
                 Console.WriteLine("5. Nästa vecka");
-                Console.WriteLine("6. Avsluta");
+                Console.WriteLine("6. Avsluta (spara)");
                 Console.Write("Välj ett alternativ: ");
                 string val = Console.ReadLine();
 
@@ -55,15 +72,10 @@ namespace Grundkurs_i_Programmering___Nybörjare
                         kund.Hunger--;
                         kund.Torst--;
                         kund.Energi--;
-
-                        if (!kund.ÄrLevande())
-                        {
-                            Console.WriteLine("💀 Du glömde äta och dricka... Du förlorade spelet!");
-                            return;
-                        }
                         break;
                     case "6":
-                        Console.WriteLine(" Hejdå!");
+                        kund.SparaData(vecka);
+                        Console.WriteLine("Spelet har sparats. Hejdå!");
                         return;
                     default:
                         Console.WriteLine(" Ogiltigt val.");

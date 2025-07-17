@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Grundkurs_i_Programmering__Nybörjare.Affar;
 
 namespace Grundkurs_i_Programmering__Nybörjare.Kund
@@ -59,6 +60,43 @@ namespace Grundkurs_i_Programmering__Nybörjare.Kund
         public bool ÄrLevande()
         {
             return Hunger > 0 && Torst > 0 && Energi > 0;
+        }
+
+        public void SparaData(int vecka)
+        {
+            string fil = "speldata.txt";
+            using (StreamWriter sw = new StreamWriter(fil))
+            {
+                sw.WriteLine(Namn);
+                sw.WriteLine(Saldo);
+                sw.WriteLine(vecka);
+                sw.WriteLine(Hunger);
+                sw.WriteLine(Torst);
+                sw.WriteLine(Energi);
+            }
+        }
+
+        public bool LaddaData(out int vecka)
+        {
+            string fil = "speldata.txt";
+            vecka = 1;
+
+            if (File.Exists(fil))
+            {
+                string[] rader = File.ReadAllLines(fil);
+                if (rader.Length >= 6)
+                {
+                    Namn = rader[0];
+                    Saldo = double.Parse(rader[1]);
+                    vecka = int.Parse(rader[2]);
+                    Hunger = int.Parse(rader[3]);
+                    Torst = int.Parse(rader[4]);
+                    Energi = int.Parse(rader[5]);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
